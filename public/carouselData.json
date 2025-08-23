@@ -1,0 +1,39 @@
+[
+  {
+    "title": "Everywhere",
+    "subtitle": "Newspaper Advertising Excellence",
+    "desc": "Reach millions through strategic print placements",
+    "stats": [
+      { "title": "500+", "subtitle": "Campaigns Delivered" },
+      { "title": "15+", "subtitle": "Years Experience" },
+      { "title": "98%", "subtitle": "Client Satisfaction" }
+    ],
+    "bgImage": "https://res.cloudinary.com/dvrwh4jx2/image/upload/v1755771812/1_sgludz.svg",
+    "gradient": "bg-gradient-to-r from-purple-800/50 to-blue-900/80"
+  },
+  
+  {
+    "title": "Digital Impact, Real Results",
+    "subtitle": "Online Advertising Expertise",
+    "desc": "Expand your brand reach with effective digital campaigns.",
+    "stats": [
+      { "title": "1000+", "subtitle": "Digital Campaigns" },
+      { "title": "20+", "subtitle": "Industries Served" },
+      { "title": "99%", "subtitle": "Positive Feedback" }
+    ],
+    "bgImage": "https://res.cloudinary.com/dvrwh4jx2/image/upload/v1755771874/2_of72uk.svg",
+    "gradient":"bg-gradient-to-r from-purple-800/50 to-blue-900/80"
+  },
+  {
+    "title": "Creativity Unleashed",
+    "subtitle": "Innovative Marketing Solutions",
+    "desc": "Let’s help your brand stand out from the crowd.",
+    "stats": [
+      { "title": "300+", "subtitle": "Creative Projects" },
+      { "title": "10+", "subtitle": "Awards Won" },
+      { "title": "24/7", "subtitle": "Support Available" }
+    ],
+    "bgImage": "https://res.cloudinary.com/dvrwh4jx2/image/upload/v1755771836/3_osan20.svg",
+    "gradient": "bg-gradient-to-r from-purple-800/50 to-blue-900/80"
+  }
+]
