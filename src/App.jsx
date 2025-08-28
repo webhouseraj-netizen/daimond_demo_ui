@@ -1,16 +1,18 @@
 import { Routes, Route, Link } from "react-router-dom";
-import Home from "./Component/Home";
-import "./index.css"; 
-import About from "./Component/About";
-import Services from "./Component/Services";
-import Gallery from "./Component/Gallery";
-import Contact from "./Component/Contact";
-
-import PageNotFound from "./Component/PageNotFound";
+import { Suspense, lazy } from "react";
 import Footer from "./Component/Footer";
 import Navbar from "./Component/Navbar";
-import ManchProfile from "./Component/ManchProfile";
-import KinderHero from "./Component/KinderHero";
+
+import "./index.css"; 
+const Home = lazy(() => import("./Component/Home"));
+const About = lazy(() => import("./Component/About"));
+const Services = lazy(() => import("./Component/Services"));
+const Gallery = lazy(() => import("./Component/Gallery"));
+const Contact = lazy(() => import("./Component/Contact"));
+const PageNotFound = lazy(() => import("./Component/PageNotFound"));
+const ManchProfile = lazy(() => import("./Component/ManchProfile"));
+const KinderHero = lazy(() => import("./Component/KinderHero"));
+
 
 
 
@@ -21,16 +23,18 @@ export default function App() {
 
       {/* Routes */}
       <Navbar/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/gallery" element={<Gallery/>} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/manch" element={<ManchProfile />} />
-        <Route path="/kinder-garten" element={<KinderHero/>} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+         <Suspense fallback={<div className="text-center p-10">Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/manch" element={<ManchProfile />} />
+          <Route path="/kinder-garten" element={<KinderHero />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </Suspense>
       <Footer />
       
     </div>
