@@ -13,6 +13,7 @@ import ManchProfile from "./Component/ManchProfile";
 import KinderHero from "./Component/KinderHero";
 
 
+
 export default function App() {
   return (
     <div>
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
+      
     </div>
   );
 }

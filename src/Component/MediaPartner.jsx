@@ -75,10 +75,10 @@ export default function MediaPartner() {
   const [modalImg, setModalImg] = useState(null);
 
   return (
-    <div className="w-full min-h-screen  bg-gradient-to-br from-[#e3d6f7] to-[#131734] pt-10 pb-16">
+    <div className="w-full min-h-screen  bg-gradient-to-br from-[#0568B4] to-[#131734] pt-10 pb-16">
       {/* ---- Media Partners ---- */}
       <section className="max-w-6xl px-2 mx-auto">
-        <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-2 text-gray-900">
+        <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-2 text-white">
           Our Media{" "}
           <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
             Partners
@@ -101,7 +101,7 @@ export default function MediaPartner() {
                   className="max-h-full max-w-full object-contain"
                 />
               </div>
-              <div className="mt-3 text-lg font-semibold text-gray-900 text-center">{partner.label}</div>
+              <div className="mt-3 text-lg font-semibold text-white text-center">{partner.label}</div>
             </div>
           ))}
         </div>

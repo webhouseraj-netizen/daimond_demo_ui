@@ -1,5 +1,6 @@
 // MissionVisionSection.jsx
 import { FaBullseye, FaEye } from "react-icons/fa6";
+import about_image from '../assets/about-pic.jpeg'
 
 export default function MissionVisionSection() {
   return (
@@ -106,9 +107,10 @@ export default function MissionVisionSection() {
             "
           >
             <img
-              src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop"
+              // src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1400&auto=format&fit=crop"
+              src={about_image}
               alt="Collaboration at Diamond Ads"
-              className="cursor-pointer w-full h-[460px] md:h-[720px] object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+              className="cursor-pointer w-full h-[460px] md:h-[720px] object-fill transition-transform duration-300 ease-out group-hover:scale-105"
             />
           </div>
         </div>

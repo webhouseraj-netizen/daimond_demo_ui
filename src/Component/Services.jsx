@@ -6,9 +6,9 @@ import {
   FaStore,
   FaUser,
   FaVideo,
+  FaGlobe,
 } from "react-icons/fa6";
-import Navbar from "./Navbar";
-import { Link } from "react-router-dom";
+
 import ServiceHero from "./ServiceHero";
 import MediaPartner from "./MediaPartner";
 
@@ -49,10 +49,10 @@ const cards = [
     ],
   },
   {
-    title: "Trade Fairs",
+    title: "Event Management",
     desc: "Creative brand presence at expos, fairs and exhibitions for direct audience interaction.",
     icon: <FaStore className="text-3xl text-white cursor-pointer" />,
-    color: "from-green-400 to-emerald-500",
+ 
     tags: [
       { text: "Expo Stalls", color: "text-green-200" },
       { text: "Brand Activations", color: "text-green-200" },
@@ -68,6 +68,18 @@ const cards = [
       { text: "Scriptwriting", color: "text-blue-200" },
       { text: "Filming", color: "text-purple-200" },
       { text: "Editing", color: "text-blue-200" },
+    ],
+  },
+
+  {
+    title: "Digital Marketing",
+    desc: "Boost your brand visibility through  social media campaigns, paid ads, and engaging content strategies to reach the right audience online.",
+    icon: <FaGlobe className="text-3xl text-white cursor-pointer" />,
+    color: "from-blue-400 to-purple-400",
+    tags: [
+      { text: "Social Media Ads", color: "text-blue-200" },
+      { text: "Content Marketing", color: "text-purple-300" },
+      { text: "Email Marketing", color: "text-blue-400" },
     ],
   },
 ];

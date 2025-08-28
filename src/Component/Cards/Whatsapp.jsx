@@ -33,7 +33,8 @@ export default function Whatsapp() {
   return (
     <div className="fixed bottom-[50px] right-[50px] flex flex-col items-center gap-4 z-100">
       <a
-        href={`tel:${phoneNumber}`}
+        // href={`tel:${phoneNumber}`}
+        href={`tel:+919234667396`}
         className="bg-[#25d366] rounded-full p-4 shadow-lg cursor-pointer flex items-center justify-center
           animate-pulse hover:scale-110 transition-transform duration-300"
         title="Call us"
@@ -41,10 +42,11 @@ export default function Whatsapp() {
         <FaPhoneAlt className="text-white text-4xl" />
       </a>
       <a
-        href={`https://wa.me/${whatsappNumber}`}
+        // href={`https://wa.me/${whatsappNumber}`}
+        href={`https://wa.me/9234667396`} 
         className="bg-[#128C7E] rounded-full p-4 shadow-lg cursor-pointer flex items-center justify-center
           animate-pulse hover:scale-110 transition-transform duration-300"
-        title="Chat on WhatsApp"
+        title="Chat on Diamond Ads"
         target="_blank"
         rel="noopener noreferrer"
       >
