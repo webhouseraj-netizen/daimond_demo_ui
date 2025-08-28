@@ -26,9 +26,9 @@ export default function Footer() {
 
   // Change based on route
   if (location.pathname === "/manch") {
-    phoneNumbers = [{ number: "12345" }, { number: "12345" }];
+    phoneNumbers = [{ number: "9234667396" }];
   } else if (location.pathname === "/kinder-garten") {
-    phoneNumbers = [{ number: "2525252525" }, { number: "2525252525" }];
+    phoneNumbers = [{ number: "9234667396" }];
   }
 
   return (
