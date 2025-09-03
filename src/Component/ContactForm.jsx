@@ -182,7 +182,7 @@ const ContactForm = () => {
           {/* Map */}
           <div className="w-full lg:w-4xl mb-6 lg:mb-0">
             <iframe
-              src={officeData.mapSrc}
+              src={officeData?.mapSrc}
               width="100%"
               height="300"
               style={{ border: 0, borderRadius: "15px" }}
@@ -198,19 +198,19 @@ const ContactForm = () => {
           <div className="w-full lg:w-4xl grid  md:grid-cols-2  gap-4 bg-[#202a43] p-6 rounded-xl text-white shadow-lg">
             <div className="w-1/2">
               <h3 className="text-xl font-semibold mb-2">Office Address</h3>
-              <p className="text-gray-300 mb-1">{officeData.officeAddress}</p>
+              <p className="text-gray-300 mb-1">{officeData?.officeAddress}</p>
               <p className="text-blue-400">
-                <a href={`tel:${officeData.officePhone}`}>
-                    {officeData.officePhone}
+                <a href={`tel:${officeData?.officePhone}`}>
+                    {officeData?.officePhone}
                 </a>
               </p>
             </div>
             <div>
               <h3 className="text-lg font-medium mb-1">Directions</h3>
-              <p className="text-gray-300">{officeData.directions}</p>
+              <p className="text-gray-300">{officeData?.directions}</p>
               <a
                 href={`https://www.google.com/maps?q=${encodeURIComponent(
-                  officeData.officeAddress
+                  officeData?.officeAddress
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
