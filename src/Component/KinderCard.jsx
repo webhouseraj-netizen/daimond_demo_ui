@@ -1,7 +1,34 @@
+import axios from "axios";
 import kinder1 from "../assets/kinder1.jpeg";
 import kinder2 from "../assets/kinder2.jpeg";
+import KinderGalleryCard from "./KinderGalleryCard";
+import { useEffect, useState } from "react";
 
 export default function KinderCard() {
+
+
+    const [images, setImages] = useState([]);
+
+  // API se data fetch
+  const fetchImages = async () => {
+    try {
+      const res = await axios.get("https://daimondads-backend.onrender.com/api/getAllKinder");
+      console.log("API Response KinderCard:", res.data?.image[0].image[0].url);
+
+       if (res.data.success && res.data.image.length > 0) {
+        // pehle document ke andar ke image array ko nikalo
+        setImages(res?.data?.image[0]?.image); 
+      } else {
+        setImages([]);
+      }
+    } catch (err) {
+      console.error("Error fetching images:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchImages();
+  }, []);
   return (
     <section className="w-full min-h-screen px-2 py-10 md:py-16 bg-gradient-to-br from-slate-300 via-purple-100 to-slate-300 flex flex-col items-center">
       {/* Title */}
@@ -18,14 +45,14 @@ export default function KinderCard() {
       </p>
 
       {/* Top Section */}
-      <div className="w-full max-w-5xl flex flex-col md:flex-row gap-8 mb-12">
+      <div className="w-full max-w-5xl max-h-[300px] flex flex-col md:flex-row gap-5 mb-12">
         {/* Image Left */}
         <div className="md:w-1/2 w-full flex justify-center">
-          <div className="rounded-2xl overflow-hidden shadow-lg w-full max-w-lg transition-transform duration-500 hover:scale-105">
+          <div className="rounded-2xl overflow-hidden  shadow-lg w-full max-w-lg transition-transform duration-500 hover:scale-105">
             <img
-              src={kinder1}
+              src={images[0]?.url}
               alt="Kinder Classroom"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
         </div>
@@ -63,7 +90,7 @@ export default function KinderCard() {
       </div>
 
       {/* Bottom Section */}
-      <div className="w-full max-w-5xl flex flex-col md:flex-row gap-8">
+      <div className="w-full max-w-5xl max-h-[300px] flex flex-col md:flex-row gap-5">
         {/* Card Left */}
         <div className="md:w-1/2 w-full bg-violet-300/60 rounded-2xl shadow-lg p-8 flex flex-col justify-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-3">
@@ -93,9 +120,9 @@ export default function KinderCard() {
         </div>
         {/* Image Right */}
         <div className="md:w-1/2 w-full flex justify-center">
-          <div className="rounded-2xl overflow-hidden shadow-lg w-full max-w-lg transition-transform duration-500 hover:scale-105">
+          <div className="rounded-2xl overflow-hidden max-h-[300px] shadow-lg w-full max-w-lg transition-transform duration-500 hover:scale-105">
             <img
-              src={kinder2}
+              src={images[1]?.url}
               alt="Creative Classroom"
               className="w-full h-full object-cover"
             />
@@ -106,16 +133,16 @@ export default function KinderCard() {
       <div className="w-full max-w-5xl pt-10  flex flex-col md:flex-row gap-8 ">
         {/* Image Left */}
         <div className="md:w-1/2 w-full flex justify-center">
-          <div className="rounded-2xl overflow-hidden shadow-lg w-full max-w-lg transition-transform duration-500 hover:scale-105">
+          <div className="rounded-2xl overflow-hidden shadow-lg w-full max-h-[300px] max-w-lg transition-transform duration-500 hover:scale-105">
             <img
-              src={kinder1}
+              src={images[2]?.url}
               alt="Kinder Classroom"
               className="w-full h-full object-cover"
             />
           </div>
         </div>
         {/* Card Right */}
-        <div className="md:w-1/2 w-full bg-violet-300/60 rounded-2xl  shadow-lg p-8 flex flex-col justify-center">
+        <div className="md:w-1/2 w-full bg-violet-300/60 rounded-2xl  max-h-[300px] shadow-lg p-8 flex flex-col justify-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-3">
             Safe & Nurturing Space
           </h3>
@@ -149,6 +176,7 @@ export default function KinderCard() {
           </div>
         </div>
       </div>
+      <KinderGalleryCard/>
     </section>
   );
 }

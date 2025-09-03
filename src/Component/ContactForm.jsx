@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
+import axios from "axios";
 
 const dummyOfficeData = {
   officeAddress:
@@ -14,12 +15,7 @@ const dummyOfficeData = {
 // console.log(mapSrc);
 
 // Simulate fetch with a Promise that resolves after 1 second
-const fetchDummyOfficeData = () =>
-  new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(dummyOfficeData);
-    }, 1000);
-  });
+;
 
 const ContactForm = () => {
   const [form, setForm] = useState({
@@ -29,22 +25,27 @@ const ContactForm = () => {
     message: "",
   });
 
-  const [officeData, setOfficeData] = useState({});
+  const [officeData, setOfficeData] = useState();
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const data = await fetchDummyOfficeData();
-        setOfficeData(data);
-      } catch (error) {
-        console.error("Error loading dummy office data:", error);
-      } finally {
-        setLoading(false);
+ 
+
+ useEffect(() => {
+  const fetchOffice = async () => {
+    try {
+      const res = await axios.get("https://daimondads-backend.onrender.com/api/getOffice");
+      console.log(res.data.office ,"location"); // Check the API response
+      if (res.data.office) {
+        setOfficeData(res.data.office);
       }
-    };
-    getData();
-  }, []);
+    } catch (err) {
+      console.error("Error fetching office:", err);
+    } finally {
+      setLoading(false); // Stop showing the loading screen
+    }
+  };
+  fetchOffice();
+}, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -200,7 +201,7 @@ const ContactForm = () => {
               <p className="text-gray-300 mb-1">{officeData.officeAddress}</p>
               <p className="text-blue-400">
                 <a href={`tel:${officeData.officePhone}`}>
-                  {officeData.officePhone}
+                    {officeData.officePhone}
                 </a>
               </p>
             </div>

@@ -8,28 +8,61 @@ import { MdLocationOn, MdCall, MdEmail } from "react-icons/md";
 import image from "../assets/dia-logo.png";
 import { Link, useLocation } from "react-router-dom";
 import Whatsapp from "./Cards/Whatsapp";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Footer() {
-  const location = useLocation();
+  // const location = useLocation();
 
   // Default numbers
-  let phoneNumbers = [{ number: "9234667396" }, { number: "7903595077" }];
-  let Email = [{ email: "diamondads90@gmail.com" }];
+  // let phoneNumbers = [{ number: "9234667396" }, { number: "7903595077" }];
+  // let Email = [{ email: "diamondads90@gmail.com" }];
 
-  if (location.pathname === "/manch") {
-    Email = [{ email: "munch@gmail.com" }];
+  // if (location.pathname === "/manch") {
+  //   Email = [{ email: "munch@gmail.com" }];
 
-    console.log(Email);
-  } else if (location.pathname === "/kinder-garten") {
-    Email = [{ email: "info@kgpsbakhri.com" }];
-  }
+  //   console.log(Email);
+  // } else if (location.pathname === "/kinder-garten") {
+  //   Email = [{ email: "info@kgpsbakhri.com" }];
+  // }
 
-  // Change based on route
-  if (location.pathname === "/manch") {
-    phoneNumbers = [{ number: "9234667396" }];
-  } else if (location.pathname === "/kinder-garten") {
-    phoneNumbers = [{ number: "9234667396" }];
-  }
+  // // Change based on route
+  // if (location.pathname === "/manch") {
+  //   phoneNumbers = [{ number: "9234667396" }];
+  // } else if (location.pathname === "/kinder-garten") {
+  //   phoneNumbers = [{ number: "9234667396" }];
+  // }
+
+
+
+
+
+  const location = useLocation();
+  const [contact, setContact] = useState(null);
+
+  useEffect(() => {
+    const fetchContact = async () => {
+      try {
+        // Map frontend route to DB page
+        let page = "default"; // default for most routes
+        if (location.pathname === "/manch") page = "manch";
+        else if (location.pathname === "/kinder-garten") page = "kinder-garten";
+
+        const res = await axios.get(`https://daimondads-backend.onrender.com/api/getfooter/${page}`);
+        console.log("footer",res);
+        
+        setContact(res.data.data);
+      } catch (err) {
+        console.error("Error fetching contact:", err);
+      }
+    };
+
+    fetchContact();
+  }, [location]);
+
+  if (!contact) return <div>Loading...</div>;
+
+
 
   return (
     <>
@@ -90,7 +123,7 @@ export default function Footer() {
                   to="/services"
                   className="hover:text-blue-600 hover:scale-105 transition transform duration-300"
                 >
-                  Newspaper Ads
+                  Print Media
                 </Link>
               </li>
               <li>
@@ -98,7 +131,7 @@ export default function Footer() {
                   to="/services"
                   className="hover:text-blue-600 hover:scale-105 transition transform duration-300"
                 >
-                  Print Media
+                  Electronic Media
                 </Link>
               </li>
               <li>
@@ -114,7 +147,15 @@ export default function Footer() {
                   to="/services"
                   className="hover:text-blue-600 hover:scale-105 transition transform duration-300"
                 >
-                  TV Commercials
+                  Digital Marketing
+                </Link>
+              </li>{" "}
+              <li>
+                <Link
+                  to="/services"
+                  className="hover:text-blue-600 hover:scale-105 transition transform duration-300"
+                >
+                  Outdoor Publicity
                 </Link>
               </li>
             </ul>
@@ -162,17 +203,14 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div className="md:w-[400px] ">
+          <div className="md:w-[400px]">
             <h3 className="font-bold text-cyan-300 text-lg mb-4">
               Contact Info
             </h3>
-            <ul className="space-y-3 ">
+            <ul className="space-y-3">
               <li className="flex gap-2 items-center">
-                <MdLocationOn className="text-cyan-400 cursor-pointer text-3xl md:text-[5rem]" />
-                <span className="text-[20px]">
-                  502, Shanti Heritage, Rukunpura, Bailey Road, Patna-800 014,
-                  Bihar.
-                </span>
+                <MdLocationOn  size={28} className="text-cyan-400 cursor-pointer text-3xl md:text-[5rem]" />
+                <span className="text-[20px]">{contact.address}</span>
               </li>
 
               <li className="flex gap-2 items-start">
@@ -181,7 +219,7 @@ export default function Footer() {
                   size={28}
                 />
                 <div className="flex flex-wrap gap-4">
-                  {phoneNumbers.map((ph, index) => (
+                  {contact.phoneNumbers.map((ph, index) => (
                     <a
                       key={index}
                       href={`tel:+91${ph.number}`}
@@ -196,10 +234,10 @@ export default function Footer() {
               <li className="flex gap-2 items-start">
                 <MdEmail
                   className="text-cyan-400 cursor-pointer mt-1"
-                  size={28}
+                  size={20}
                 />
                 <div className="flex flex-wrap gap-4">
-                  {Email.map((em, index) => (
+                  {contact.emails.map((em, index) => (
                     <a
                       key={index}
                       href={`mailto:${em.email}`}

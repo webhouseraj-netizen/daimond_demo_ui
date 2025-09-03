@@ -29,6 +29,8 @@ const cardData = [
     img:  massAudienceImg,
     icon: <FaUsers className="text-xl text-white" />,
   },
+
+  
 ];
 export default function MediaCard() {
   return (

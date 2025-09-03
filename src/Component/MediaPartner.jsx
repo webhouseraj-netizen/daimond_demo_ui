@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from 'axios'
+
 
 // Replace these with your own assets or URLs
 // import logoHindustan from "../assets/hindustan.png";
@@ -7,7 +9,7 @@ import React, { useState } from "react";
 // import logoJagran from "../assets/dainik-jagran.png";
 // import logoKhabar from "../assets/prabhat-khabar.png";
 // import logoBhaskar from "../assets/dainik-bhaskar.png";
-
+//
 // Media Partners data
 const mediaPartners = [
   { src:"data:image/jpeg;base64,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", alt: "Dainik Bhaskar", label: "Dainik Bhaskar" },
@@ -73,7 +75,22 @@ const whyChoose = [
 export default function MediaPartner() {
   // For fullscreen modal images
   const [modalImg, setModalImg] = useState(null);
+  const [MediaList, setMediaList]= useState([]);
+  useEffect(() => {
+    fetchMedia();
+  }, []);
 
+  const fetchMedia = async () => {
+    try {
+      const res = await axios.get("https://daimondads-backend.onrender.com/api/getPrintMedia");
+      console.log(res);
+      
+      setMediaList(res.data?.data || []);
+    } catch (err) {
+      console.error("Error fetching media:", err);
+      toast.error("Failed to fetch media!");
+    }
+  };
   return (
     <div className="w-full min-h-screen  bg-gradient-to-br from-[#0568B4] to-[#131734] pt-10 pb-16">
       {/* ---- Media Partners ---- */}
@@ -88,20 +105,20 @@ export default function MediaPartner() {
           We collaborate with leading publications and media houses to ensure maximum reach and impact for your campaigns.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7">
-          {mediaPartners.map((partner, idx) => (
+          {MediaList.map((partner, idx) => (
             <div
-              key={partner.label}
+              key={idx._id}
               className="rounded-2xl overflow-hidden bg-white/10 backdrop-blur-lg border border-white/10 shadow-lg flex flex-col items-center py-4 transition-transform duration-300 hover:scale-105 cursor-pointer"
               onClick={() => setModalImg(partner)}
             >
               <div className="w-80 h-40 flex items-center justify-center mb-5">
                 <img
-                  src={partner.src}
-                  alt={partner.label}
+                  src={partner.image.url}
+                  alt={partner.title}
                   className="max-h-full max-w-full object-contain"
                 />
               </div>
-              <div className="mt-3 text-lg font-semibold text-white text-center">{partner.label}</div>
+              <div className="mt-3 text-lg font-semibold text-white text-center">{partner.title}</div>
             </div>
           ))}
         </div>
@@ -114,9 +131,9 @@ export default function MediaPartner() {
           onClick={() => setModalImg(null)}
         >
           <img
-            src={modalImg.src}
-            alt={modalImg.label}
-            className="max-h-[80vh] max-w-[90vw] object-contain rounded-xl shadow-2xl bg-white p-2"
+            src={modalImg.image.url}
+            alt={modalImg.title}
+            className="max-h-[30vh] max-w-[90vw] object-contain rounded-xl shadow-2xl bg-white p-2"
           />
         </div>
       )}

@@ -10,12 +10,15 @@ export default function Carousel() {
   const prevBg = useRef(""); // Previous bg image for fading
 
   // Fetch carousel data
-  useEffect(() => {
-    axios
-      .get("/carouselData.json")
-      .then((res) => setSlides(res.data))
-      .catch((err) => console.error("Fetch error:", err));
-  }, []);
+useEffect(() => {
+  axios
+    .get("https://daimondads-backend.onrender.com/api/getCarousel")
+    .then((res) => {
+      console.log("API Response carousel:", res.data);
+      setSlides(res.data.data); // <-- यहाँ data.data
+    })
+    .catch((err) => console.error("Fetch error:", err));
+}, []);
 
   // Content slide timer (4s)
   useEffect(() => {
@@ -85,7 +88,7 @@ export default function Carousel() {
         }}
       />
       {/* Gradient Overlay */}
-      <div className={`absolute inset-0 ${currentContent.gradient} z-10`}></div>
+      <div className={`absolute inset-0 bg-gradient-to-r from-purple-800/50 to-blue-900/80 z-10`}></div>
       {/* Content slides independently */}
       <div className="relative z-20 w-full max-w-7xl px-8 py-12 flex flex-col justify-center">
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-2">
