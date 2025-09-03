@@ -210,7 +210,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex gap-2 items-center">
                 <MdLocationOn  size={28} className="text-cyan-400 cursor-pointer text-3xl md:text-[5rem]" />
-                <span className="text-[20px]">{contact.address}</span>
+                <span className="text-[20px]">{contact?.address}</span>
               </li>
 
               <li className="flex gap-2 items-start">
@@ -219,13 +219,13 @@ export default function Footer() {
                   size={28}
                 />
                 <div className="flex flex-wrap gap-4">
-                  {contact.phoneNumbers.map((ph, index) => (
+                  {contact.phoneNumbers?.map((ph, index) => (
                     <a
                       key={index}
-                      href={`tel:+91${ph.number}`}
+                      href={`tel:+91${ph?.number}`}
                       className="hover:underline text-[18px] break-all"
                     >
-                      +91{ph.number}
+                      +91{ph?.number}
                     </a>
                   ))}
                 </div>
@@ -237,13 +237,13 @@ export default function Footer() {
                   size={20}
                 />
                 <div className="flex flex-wrap gap-4">
-                  {contact.emails.map((em, index) => (
+                  {contact.emails?.map((em, index) => (
                     <a
                       key={index}
-                      href={`mailto:${em.email}`}
+                      href={`mailto:${em?.email}`}
                       className="hover:underline text-[18px] break-all"
                     >
-                      {em.email}
+                      {em?.email}
                     </a>
                   ))}
                 </div>
