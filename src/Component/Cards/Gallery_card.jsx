@@ -9,6 +9,7 @@ const categories = [
   { label: "Trade Fairs", value: "Trade Fairs" },
   { label: "Biopic Creation", value: "Biopic Creation" },
   { label: "Digital Marketing", value: "Digital Marketing" },
+  {label:"Website Pic",value:"Website Pic"}
 ];
 
 export default function Gallery_card() {
