@@ -26,7 +26,7 @@ function KinderGalleryCard() {
   }, []);
   return (
      <div className="min-h-auto  to-[#aba9ad] p-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-7 max-w-7xl m-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7 max-w-7xl m-auto">
         {image.map((img,index) => (
           <div
             key={index}

@@ -5,19 +5,19 @@ import KinderGalleryCard from "./KinderGalleryCard";
 import { useEffect, useState } from "react";
 
 export default function KinderCard() {
-
-
-    const [images, setImages] = useState([]);
+  const [images, setImages] = useState([]);
 
   // API se data fetch
   const fetchImages = async () => {
     try {
-      const res = await axios.get("https://daimondads-backend.onrender.com/api/getAllKinder");
+      const res = await axios.get(
+        "https://daimondads-backend.onrender.com/api/getAllKinder"
+      );
       console.log("API Response KinderCard:", res.data?.image[0].image[0].url);
 
-       if (res.data.success && res.data.image.length > 0) {
+      if (res.data.success && res.data.image.length > 0) {
         // pehle document ke andar ke image array ko nikalo
-        setImages(res?.data?.image[0]?.image); 
+        setImages(res?.data?.image[0]?.image);
       } else {
         setImages([]);
       }
@@ -45,19 +45,20 @@ export default function KinderCard() {
       </p>
 
       {/* Top Section */}
-      <div className="w-full max-w-5xl max-h-[300px] flex flex-col md:flex-row gap-5 mb-12">
+      <div className="w-full max-w-5xl flex flex-col md:flex-row gap-5 mb-12">
         {/* Image Left */}
-        <div className="md:w-1/2 w-full flex justify-center">
-          <div className="rounded-2xl overflow-hidden  shadow-lg w-full max-w-lg transition-transform duration-500 hover:scale-105">
+        <div className="md:w-1/2 w-full flex justify-center order-1 md:order-1">
+          <div className="rounded-2xl overflow-hidden shadow-lg w-full max-w-lg transition-transform duration-500 hover:scale-105">
             <img
               src={images[0]?.url}
               alt="Kinder Classroom"
-              className="w-full h-full object-contain"
+              className="w-full h-64 md:h-80 lg:h-96 object-cover"
             />
           </div>
         </div>
+
         {/* Card Right */}
-        <div className="md:w-1/2 w-full bg-violet-300/60 rounded-2xl shadow-lg p-8 flex flex-col justify-center">
+        <div className="md:w-1/2 w-full bg-violet-300/60 rounded-2xl shadow-lg p-8 flex flex-col justify-center order-2 md:order-2">
           <h3 className="text-2xl font-bold text-gray-900 mb-3">
             Early Childhood Development
           </h3>
@@ -90,9 +91,9 @@ export default function KinderCard() {
       </div>
 
       {/* Bottom Section */}
-      <div className="w-full max-w-5xl max-h-[300px] flex flex-col md:flex-row gap-5">
+      <div className="w-full max-w-5xl flex flex-col md:flex-row gap-5">
         {/* Card Left */}
-        <div className="md:w-1/2 w-full bg-violet-300/60 rounded-2xl shadow-lg p-8 flex flex-col justify-center">
+        <div className="md:w-1/2 w-full bg-violet-300/60 rounded-2xl shadow-lg p-8 flex flex-col justify-center order-2 md:order-1">
           <h3 className="text-2xl font-bold text-gray-900 mb-3">
             Creative Learning Environment
           </h3>
@@ -118,13 +119,14 @@ export default function KinderCard() {
             </ul>
           </div>
         </div>
+
         {/* Image Right */}
-        <div className="md:w-1/2 w-full flex justify-center">
-          <div className="rounded-2xl overflow-hidden max-h-[300px] shadow-lg w-full max-w-lg transition-transform duration-500 hover:scale-105">
+        <div className="md:w-1/2 w-full flex justify-center order-1 md:order-2">
+          <div className="rounded-2xl overflow-hidden shadow-lg w-full max-w-lg transition-transform duration-500 hover:scale-105">
             <img
               src={images[1]?.url}
               alt="Creative Classroom"
-              className="w-full h-full object-cover"
+              className="w-screen h-64 md:h-80 lg:h-96 object-cover"
             />
           </div>
         </div>
@@ -137,7 +139,7 @@ export default function KinderCard() {
             <img
               src={images[2]?.url}
               alt="Kinder Classroom"
-              className="w-full h-full object-cover"
+              className="w-full h-64 md:h-80 lg:h-96 object-cover"
             />
           </div>
         </div>
@@ -176,7 +178,7 @@ export default function KinderCard() {
           </div>
         </div>
       </div>
-      <KinderGalleryCard/>
+      <KinderGalleryCard />
     </section>
   );
 }
