@@ -44,7 +44,7 @@ export default function KinderHero() {
             Nurturing young minds with modern educational approaches and creative learning environments. Our educational division focuses on early childhood development and innovative teaching methods.
           </p>
           {/* Buttons Row */}
-          <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-6">
+          <div className="mt-10 grid  md:grid-cols-3 sm:grid-cols-2 md:gap-6 gap-2 max-w-2xl mx-auto">
             <HeroButton color="bg-green-600" icon="fa-solid fa-graduation-cap" text="Quality Education" />
             <HeroButton color="bg-blue-500" icon="fa-solid fa-palette" text="Creative Learning" />
             <HeroButton color="bg-pink-600" icon="fa-solid fa-heart" text="Caring Environment" />
@@ -60,11 +60,11 @@ export default function KinderHero() {
 function HeroButton({ color, icon, text }) {
   return (
     <button
-      className={`flex flex-col items-center justify-center py-4 px-6 rounded-lg shadow-lg ${color} text-white font-semibold cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300`}
-      style={{ minWidth: 135 }}
+      className={`flex items-center justify-center py-4 max-w-2xl mx-2 rounded-lg shadow-lg ${color} text-white font-semibold cursor-pointer hover:scale-105 active:scale-95 transition-all duration-300`}
+      style={{ Width: 120 }}
     >
       {/* Use font awesome icons or own SVGs */}
-      <span className="mb-2 text-2xl">
+      <span className="mb-2 text-xl">
         <i className={icon}></i>
       </span>
       {text}
