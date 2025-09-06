@@ -110,7 +110,7 @@ export default function Services() {
             <div
               key={idx}
               className={`rounded-2xl bg-gradient-to-br ${c.color} bg-opacity-70 shadow-lg p-1 pb-0 
-  hover:scale-102 hover:shadow-[0_0_15px_cyan] transition-transform duration-900 cursor-pointer`}
+                  hover:scale-102 hover:shadow-[0_0_15px_cyan] transition-transform duration-900 cursor-pointer`}
 
               style={{ minHeight: 340, transition: "box-shadow 0.3s" }}
             >
