@@ -64,13 +64,13 @@ const ContactForm = () => {
       subject: form.subject || "No subject",
       message: form.message || "No message",
     };
-    console.log(
-      "Sending with:",
-      service_id,
-      template_id,
-      public_id,
-      templateParams
-    );
+    // console.log(
+    //   "Sending with:",
+    //   service_id,
+    //   template_id,
+    //   public_id,
+    //   templateParams
+    // );
 
     emailjs.send(service_id, template_id, templateParams, public_id).then(
       (response) => {
