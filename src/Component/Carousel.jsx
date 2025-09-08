@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { FaArrowRight, FaSuitcase } from "react-icons/fa6";
+import { Link} from "react-router-dom";
 
 export default function Carousel() {
   const [slides, setSlides] = useState([]);
@@ -102,12 +103,15 @@ useEffect(() => {
         </h2>
         <p className="text-lg text-cyan-200 mb-7">{currentContent.desc}</p>
         <div className="flex gap-4 mb-10">
-          <button className="px-6 py-2 bg-cyan-500 rounded-full text-lg font-semibold text-white flex items-center gap-2 hover:bg-purple-500 transition duration-200">
+          <Link to="/services"
+            className="px-6 py-2 bg-cyan-500 rounded-full text-lg font-semibold text-white flex items-center gap-2 hover:bg-purple-500 transition duration-200">
             Explore Services <FaArrowRight />
-          </button>
-          <button className="px-6 py-2 border-2 border-cyan-400 rounded-full text-lg font-semibold text-cyan-300 flex items-center gap-2 hover:bg-cyan-800 hover:text-white transition duration-200">
+          </Link>
+          <Link to="/gallery" 
+           
+          className="px-6 py-2 border-2 border-cyan-400 rounded-full text-lg font-semibold text-cyan-300 flex items-center gap-2 hover:bg-cyan-800 hover:text-white transition duration-200">
             View Portfolio <FaSuitcase />
-          </button>
+          </Link>
         </div>
         <div className="flex gap-10 mt-6">
           {currentContent.stats.map((stat, si) => (
