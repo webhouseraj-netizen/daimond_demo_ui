@@ -4,6 +4,7 @@ import Footer from "./Component/Footer";
 import Navbar from "./Component/Navbar";
 
 import "./index.css"; 
+import TopContent from "./Component/TopContent";
 const Home = lazy(() => import("./Component/Home"));
 const About = lazy(() => import("./Component/About"));
 const Services = lazy(() => import("./Component/Services"));
@@ -22,6 +23,7 @@ export default function App() {
      
 
       {/* Routes */}
+      <TopContent/>
       <Navbar/>
          <Suspense fallback={<div className="text-center p-10">Loading...</div>}>
         <Routes>

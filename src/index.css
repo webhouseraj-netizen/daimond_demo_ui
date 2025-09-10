@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+@keyframes multicolor-blink {
+  0%, 100% { color: #dc2626; }   /* red */
+       /* orange */
+         /* cyan */
+        /* green */
+  80% { color: #000000; }        /* purple */
+}
+
+.multicolor-blink {
+  animation: multicolor-blink 1s linear infinite;
+  transition: color 0.14s linear;
+}

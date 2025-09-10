@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 // import image from "../assets/dia-logo.png";
-import video from "../assets/logo.mp4";
+// import video from "../assets/logo.mp4";
+import image from "../assets/diamondsdslogo.jpeg";
 
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
@@ -21,15 +22,8 @@ const Navbar = () => {
       </div> */}
       <div className="flex items-center">
         <Link to="/" className="bg-[#ffffff] text-white">
-          <video
-            className="h-[70px] w-[190px] object-cover"
-            src={video}
-            autoPlay
-            muted
-            loop
-            playsInline
-            alt="Logo Video"
-          />
+          <img src={image} alt="Diamond Ads Logo"
+          className="h-[80px] w-[170px] text-white object-contain" />
         </Link>
       </div>
 
@@ -81,7 +75,7 @@ const Navbar = () => {
                   to="/manch"
                   className="block px-4 py-2 text-white hover:bg-cyan-700 transition text-[15px]"
                 >
-                  MUNCH
+                  MANCH
                 </NavLink>
               </li>
               <li>
@@ -89,7 +83,7 @@ const Navbar = () => {
                   to="kinder-garten"
                   className="block px-4 py-2 text-white hover:bg-cyan-700 transition text-[15px]"
                 >
-                  Kinder garten
+                  Kinder Garten
                 </NavLink>
               </li>
             </ul>
@@ -230,7 +224,7 @@ const Navbar = () => {
                       setDropdown(false);
                     }}
                   >
-                    MUNCH
+                    MANCH
                   </NavLink>
                 </li>
                 <li>
@@ -242,7 +236,7 @@ const Navbar = () => {
                       setDropdown(false);
                     }}
                   >
-                    Kinder garten
+                    Kinder Garten
                   </NavLink>
                 </li>
               </ul>
