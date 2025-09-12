@@ -12,29 +12,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Footer() {
-  // const location = useLocation();
-
-  // Default numbers
-  // let phoneNumbers = [{ number: "9234667396" }, { number: "7903595077" }];
-  // let Email = [{ email: "diamondads90@gmail.com" }];
-
-  // if (location.pathname === "/manch") {
-  //   Email = [{ email: "munch@gmail.com" }];
-
-  //   console.log(Email);
-  // } else if (location.pathname === "/kinder-garten") {
-  //   Email = [{ email: "info@kgpsbakhri.com" }];
-  // }
-
-  // // Change based on route
-  // if (location.pathname === "/manch") {
-  //   phoneNumbers = [{ number: "9234667396" }];
-  // } else if (location.pathname === "/kinder-garten") {
-  //   phoneNumbers = [{ number: "9234667396" }];
-  // }
-
-
-
 
 
   const location = useLocation();
@@ -48,9 +25,11 @@ export default function Footer() {
         if (location.pathname === "/manch") page = "manch";
         else if (location.pathname === "/kinder-garten") page = "kinder-garten";
 
-        const res = await axios.get(`https://daimondads-backend.onrender.com/api/getfooter/${page}`);
-        console.log("footer",res);
-        
+        const res = await axios.get(
+          `https://daimondads-backend.onrender.com/api/getfooter/${page}`
+        );
+        console.log("footer", res);
+
         setContact(res.data.data);
       } catch (err) {
         console.error("Error fetching contact:", err);
@@ -62,19 +41,19 @@ export default function Footer() {
 
   if (!contact) return <div>Loading...</div>;
 
-
-
   return (
     <>
       <footer className="bg-gradient-to-r from-purple-800 to-blue-900 text-cyan-200 py-8 px-5">
         <div className="lg:max-w-7xl mx-auto grid md:grid-cols-2   lg:grid-cols-[300px_repeat(3,1fr)] gap-12">
           {/* Logo & About */}
           <div className="min-w-[220px]">
-            <img
-              src={image}
-              alt="diamond adsLogo"
-              className="h-10 mb-3 text-cyan-200 bg-white"
-            />
+            <Link to="/" className="bg-[#ffffff] text-white">
+              <img
+                src={image}
+                alt="Diamond Ads Logo"
+                className="h-[80px] w-[170px] text-white object-contain"
+              />
+            </Link>
             <p className="mb-4 text-[19px]">
               Since its inception in 1990, Diamond Ads has been at the forefront
               of the advertising industry, pioneering innovative strategies and
@@ -209,7 +188,10 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               <li className="flex gap-2 items-center">
-                <MdLocationOn  size={28} className="text-cyan-400 cursor-pointer text-3xl md:text-[5rem]" />
+                <MdLocationOn
+                  size={28}
+                  className="text-cyan-400 cursor-pointer text-3xl md:text-[5rem]"
+                />
                 <span className="text-[20px]">{contact?.address}</span>
               </li>
 
