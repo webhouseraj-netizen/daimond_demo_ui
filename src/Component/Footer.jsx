@@ -5,7 +5,7 @@ import {
   FaInstagram,
 } from "react-icons/fa6";
 import { MdLocationOn, MdCall, MdEmail } from "react-icons/md";
-import image from "../assets/dia-logo.png";
+
 import { Link, useLocation } from "react-router-dom";
 import Whatsapp from "./Cards/Whatsapp";
 import { useEffect, useState } from "react";
