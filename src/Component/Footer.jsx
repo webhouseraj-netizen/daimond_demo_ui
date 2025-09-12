@@ -10,6 +10,7 @@ import { Link, useLocation } from "react-router-dom";
 import Whatsapp from "./Cards/Whatsapp";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import image from "../assets/diamondsdslogo.jpeg";
 
 export default function Footer() {
 
